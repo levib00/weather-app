@@ -1,0 +1,10 @@
+.flex {
+  display: flex;
+}
+.column {
+  flex-direction: column;
+}
+div {
+  height: 20px;
+  font-size: 24px;
+}
