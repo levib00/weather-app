@@ -1,5 +1,6 @@
 const domElements = {
   search: document.querySelector('.search'),
+  searchBtn: document.querySelector('.search-btn'),
   location: document.querySelector('.location'),
   clock: document.querySelector('.time'),
   temp: document.querySelector('.temp'),
@@ -8,18 +9,22 @@ const domElements = {
   low: document.querySelector('.low-temp'),
   weather: document.querySelector('.weather'),
   windSpeed: document.querySelector('.wind-speed'),
+  humidity: document.querySelector('.humidity'),
 };
 
 function callWeatherAPI(location) {
   function display(weather) {
+    const uppercaseWeather = weather.weather.slice(0, 1).toUpperCase() + weather.weather.slice(1);
+
     domElements.location.innerText = `Location: ${weather.location}`;
     domElements.clock.innerText = `Time: ${weather.time}`;
-    domElements.temp.innerText = `Current Temperature: ${weather.temperature}`;
-    domElements.feelsLike.innerText = `Feels Like: ${weather.feelsLike}`;
-    domElements.high.innerText = `High: ${weather.high}`;
-    domElements.low.innerText = `Low: ${weather.low}`;
-    domElements.weather.innerText = `${weather.weather}`;
-    domElements.windSpeed.innerText = `Wind speed ${weather.windSpeed} km/h`;
+    domElements.temp.innerText = `Temperature: ${weather.temperature}°C`;
+    domElements.feelsLike.innerText = `Feels Like: ${weather.feelsLike}°C`;
+    domElements.high.innerText = `High: ${weather.high}°C`;
+    domElements.low.innerText = `Low: ${weather.low}°C`;
+    domElements.weather.innerText = `${uppercaseWeather}`;
+    domElements.windSpeed.innerText = `Wind speed: ${weather.windSpeed} km/h`;
+    domElements.humidity.innerText = `Humidity: ${weather.humidity}%`;
   }
   fetch(`https://api.openweathermap.org/data/2.5/weather?q=${location}&APPID=ec1daa1f6ce8bb961a208463e5e93d64&units=metric`, {
     mode: 'cors',
@@ -29,7 +34,10 @@ function callWeatherAPI(location) {
       console.log(response);
       const date = new Date();
       const hour = date.getHours();
-      const minute = date.getMinutes();
+      let minute = date.getMinutes();
+      if (minute < 10) {
+        minute = `0${minute}`;
+      }
       const weather = {
         temperature: response.main.temp,
         feelsLike: response.main.feels_like,
@@ -40,6 +48,7 @@ function callWeatherAPI(location) {
         windGusts: response.wind.gust,
         location: `${response.name}, ${response.sys.country}`,
         time: `${hour}:${minute}`,
+        humidity: response.main.humidity,
       };
       return weather;
     })
@@ -50,4 +59,10 @@ function callWeatherAPI(location) {
       console.error(err);
     });
 }
+
 callWeatherAPI('Kingston,CA');
+
+function search() {
+  callWeatherAPI(domElements.search.value);
+}
+domElements.searchBtn.addEventListener('click', search, false);
