@@ -1,3 +1,80 @@
+html, body {
+  height: 100%;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  box-sizing: border-box;
+}
+.header {
+  height: 100px;
+  align-items: center;
+  background-color: #ddd;
+  justify-content:space-between;
+  font-weight: 700;
+  font-size: 26px;
+  color: midnightblue;
+  padding: 0px 20px;
+}
+.search,
+.search-btn {
+  height: 30px;
+  font-size: 18px;
+}
+.search-inputs {
+  padding-left: 100px;
+}
+.location-banner {
+  align-items: center;
+  justify-content: space-around;
+  height: 100px;
+  background-color: midnightblue;
+  color: #ddd;
+  gap: 0px;
+  margin-left: -10px;
+  border-bottom: #ddd 1px solid;
+}
+.weather-image-stripe {
+  display: flex;
+  height: 43.7%;
+  justify-content: center;
+  background-color: #ddd;
+}
+.info-display {
+  height: 300px;
+  justify-content: space-around;
+  padding: 20px;
+  background-color: midnightblue;
+  border-top: #ddd 1px solid;
+}
+.temperature-info { 
+  border: 1px solid black;
+  gap: 15px;
+  background-color: midnightblue;
+  color: #ddd;
+}
+.weather-conditions {
+  border: 1px solid black;
+  gap: 15px;
+  background-color: midnightblue;
+  color: #ddd;
+}
+.card {
+  border: #ddd 1px solid;
+  border-radius: 18px;
+  padding: 8px;
+  width: 400px;
+  margin: 20px;
+  height: 250px;
+}
+.time {
+  margin-left: 0px;
+}
+.weather,
+.temp {
+  font-size: 32px;
+  margin-bottom: 10px;
+}
 .flex {
   display: flex;
 }

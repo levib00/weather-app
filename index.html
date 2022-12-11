@@ -9,28 +9,32 @@
   <script src="./script.js" defer></script>
 </head>
 <body>
-  <header>
+  <header class="flex header">
     <div>Weather</div>
-    <input type="search" class="search">
+    <div class="search-inputs">
+      <input type="search" class="search">
+      <button class="search-btn">search</button>
+    </div>
   </header>
-  <div>
     <div class="location-banner flex">
       <div class="location"></div>
       <div class="time"></div>
     </div>
+    <div class="weather-image-stripe">
+      <img src="https://cdn.vox-cdn.com/thumbor/z7bKIfTyJq3ibFF7YRYSCoxH3eI=/0x0:1004x753/920x613/filters:focal(422x296:582x456):format(webp)/cdn.vox-cdn.com/uploads/chorus_image/image/63710251/20150428-cloud-computing.0.1489222360.0.jpg" alt="" srcset="">
+    </div>
     <div class="info-display flex">
-      <div class="temperature-info flex column">
+      <div class="temperature-info flex column card">
         <div class="temp"></div>
         <div class="feels-like"></div>
         <div class="high-temp"></div>
         <div class="low-temp"></div>
       </div>
-      <div class="weather-conditions flex column">
+      <div class="weather-conditions flex column card">
         <div class="weather"></div>
         <div class="wind-speed"></div>
+        <div class="humidity"></div>
       </div>
     </div>
-  </div>
-  
 </body>
 </html>
